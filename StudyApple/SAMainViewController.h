@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SAViewController : UIViewController
+@interface SAMainViewController : UIViewController
 
 
 @end

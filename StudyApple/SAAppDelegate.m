@@ -7,7 +7,7 @@
 //
 
 #import "SAAppDelegate.h"
-#import "SAViewController.h"
+#import "SAMainViewController.h"
 
 @interface SAAppDelegate ()
 
@@ -20,7 +20,7 @@
     // Override point for customization after application launch.
     
     //Init root view controller of the application
-    SAViewController *vc = [[SAViewController alloc] init];
+    SAMainViewController *vc = [[SAMainViewController alloc] init];
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];

@@ -6,13 +6,13 @@
 //  Copyright © 2019 liuzhenhui. All rights reserved.
 //
 
-#import "SAViewController.h"
+#import "SAMainViewController.h"
 
-@interface SAViewController ()
+@interface SAMainViewController ()
 
 @end
 
-@implementation SAViewController
+@implementation SAMainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
