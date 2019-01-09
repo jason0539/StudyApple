@@ -126,9 +126,6 @@
 				C0A6F51D21E5F69A00DEEDE5 /* Utility */,
 				C0A6F4E321E5E33F00DEEDE5 /* SAAppDelegate.h */,
 				C0A6F4E421E5E33F00DEEDE5 /* SAAppDelegate.m */,
-				C0A6F4E621E5E33F00DEEDE5 /* SAMainViewController.h */,
-				C0A6F4E721E5E33F00DEEDE5 /* SAMainViewController.m */,
-				C0A6F4E921E5E33F00DEEDE5 /* Main.storyboard */,
 				C0A6F4EC21E5E34000DEEDE5 /* Assets.xcassets */,
 				C0A6F4EE21E5E34000DEEDE5 /* LaunchScreen.storyboard */,
 				C0A6F4F121E5E34000DEEDE5 /* Info.plist */,
@@ -189,6 +186,9 @@
 		C0A6F52121E5F6E000DEEDE5 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				C0A6F52621E5FA2100DEEDE5 /* Controller */,
+				C0A6F52521E5FA1900DEEDE5 /* View */,
+				C0A6F52421E5FA0D00DEEDE5 /* Model */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -205,6 +205,30 @@
 			children = (
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		C0A6F52421E5FA0D00DEEDE5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C0A6F52521E5FA1900DEEDE5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C0A6F4E921E5E33F00DEEDE5 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C0A6F52621E5FA2100DEEDE5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C0A6F4E621E5E33F00DEEDE5 /* SAMainViewController.h */,
+				C0A6F4E721E5E33F00DEEDE5 /* SAMainViewController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		DC642BFEACB67FB228064A56 /* Frameworks */ = {
