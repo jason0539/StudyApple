@@ -7,6 +7,8 @@
 //
 
 #import "SAMainViewController.h"
+#import <Masonry/Masonry.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface SAMainViewController ()
 
@@ -31,14 +33,11 @@
     //add button to view
     [self.view addSubview:helloButton];
     
-    //size
-    helloButton.translatesAutoresizingMaskIntoConstraints = NO; // If you want to use Auto Layout to dynamically calculate the size and position of your view, you must set this property to NO.
-    [self.view addConstraints:@[
-                                [NSLayoutConstraint constraintWithItem:helloButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:60.0],
-                                [NSLayoutConstraint constraintWithItem:helloButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:40.0],
-                                [NSLayoutConstraint constraintWithItem:helloButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0],
-                                [NSLayoutConstraint constraintWithItem:helloButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]
-                                ]];
+    [helloButton mas_makeConstraints:^(MASConstraintMaker *make){
+        make.width.equalTo(@60.0);
+        make.height.equalTo(@40.0);
+        make.center.equalTo(self.view);
+    }];
 }
 
 -(void) onHelloButtonClicked:(id)sender{
