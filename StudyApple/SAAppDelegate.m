@@ -6,17 +6,25 @@
 //  Copyright © 2019 liuzhenhui. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "SAAppDelegate.h"
+#import "SAViewController.h"
 
-@interface AppDelegate ()
+@interface SAAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation SAAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //Init root view controller of the application
+    SAViewController *vc = [[SAViewController alloc] init];
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = vc;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
