@@ -120,6 +120,10 @@
 		C0A6F4E221E5E33F00DEEDE5 /* StudyApple */ = {
 			isa = PBXGroup;
 			children = (
+				C0A6F52021E5F6C700DEEDE5 /* Resource */,
+				C0A6F51F21E5F6BA00DEEDE5 /* Feature */,
+				C0A6F51E21E5F6B000DEEDE5 /* Common */,
+				C0A6F51D21E5F69A00DEEDE5 /* Utility */,
 				C0A6F4E321E5E33F00DEEDE5 /* SAAppDelegate.h */,
 				C0A6F4E421E5E33F00DEEDE5 /* SAAppDelegate.m */,
 				C0A6F4E621E5E33F00DEEDE5 /* SAMainViewController.h */,
@@ -149,6 +153,58 @@
 				C0A6F50921E5E34000DEEDE5 /* Info.plist */,
 			);
 			path = StudyAppleUITests;
+			sourceTree = "<group>";
+		};
+		C0A6F51D21E5F69A00DEEDE5 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		C0A6F51E21E5F6B000DEEDE5 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C0A6F51F21E5F6BA00DEEDE5 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				C0A6F52321E5F6F500DEEDE5 /* User */,
+				C0A6F52221E5F6EC00DEEDE5 /* Base */,
+				C0A6F52121E5F6E000DEEDE5 /* Main */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		C0A6F52021E5F6C700DEEDE5 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		C0A6F52121E5F6E000DEEDE5 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		C0A6F52221E5F6EC00DEEDE5 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		C0A6F52321E5F6F500DEEDE5 /* User */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		DC642BFEACB67FB228064A56 /* Frameworks */ = {
