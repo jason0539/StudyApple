@@ -49,6 +49,7 @@
     }];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSLog(@"OK");
+        [SVProgressHUD showSuccessWithStatus:@"Hello,World!" maskType:SVProgressHUDMaskTypeBlack];
     }];
     [alertController addAction:cancleAction];
     [alertController addAction:okAction];
