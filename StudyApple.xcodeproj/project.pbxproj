@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C0A6F4E521E5E33F00DEEDE5 /* SAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A6F4E421E5E33F00DEEDE5 /* SAAppDelegate.m */; };
-		C0A6F4E821E5E33F00DEEDE5 /* SAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A6F4E721E5E33F00DEEDE5 /* SAViewController.m */; };
+		C0A6F4E821E5E33F00DEEDE5 /* SAMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A6F4E721E5E33F00DEEDE5 /* SAMainViewController.m */; };
 		C0A6F4EB21E5E33F00DEEDE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0A6F4E921E5E33F00DEEDE5 /* Main.storyboard */; };
 		C0A6F4ED21E5E34000DEEDE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0A6F4EC21E5E34000DEEDE5 /* Assets.xcassets */; };
 		C0A6F4F021E5E34000DEEDE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0A6F4EE21E5E34000DEEDE5 /* LaunchScreen.storyboard */; };
@@ -38,8 +38,8 @@
 		C0A6F4E021E5E33F00DEEDE5 /* StudyApple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyApple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A6F4E321E5E33F00DEEDE5 /* SAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAAppDelegate.h; sourceTree = "<group>"; };
 		C0A6F4E421E5E33F00DEEDE5 /* SAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAAppDelegate.m; sourceTree = "<group>"; };
-		C0A6F4E621E5E33F00DEEDE5 /* SAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAViewController.h; sourceTree = "<group>"; };
-		C0A6F4E721E5E33F00DEEDE5 /* SAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAViewController.m; sourceTree = "<group>"; };
+		C0A6F4E621E5E33F00DEEDE5 /* SAMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAMainViewController.h; sourceTree = "<group>"; };
+		C0A6F4E721E5E33F00DEEDE5 /* SAMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAMainViewController.m; sourceTree = "<group>"; };
 		C0A6F4EA21E5E33F00DEEDE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C0A6F4EC21E5E34000DEEDE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0A6F4EF21E5E34000DEEDE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -103,8 +103,8 @@
 			children = (
 				C0A6F4E321E5E33F00DEEDE5 /* SAAppDelegate.h */,
 				C0A6F4E421E5E33F00DEEDE5 /* SAAppDelegate.m */,
-				C0A6F4E621E5E33F00DEEDE5 /* SAViewController.h */,
-				C0A6F4E721E5E33F00DEEDE5 /* SAViewController.m */,
+				C0A6F4E621E5E33F00DEEDE5 /* SAMainViewController.h */,
+				C0A6F4E721E5E33F00DEEDE5 /* SAMainViewController.m */,
 				C0A6F4E921E5E33F00DEEDE5 /* Main.storyboard */,
 				C0A6F4EC21E5E34000DEEDE5 /* Assets.xcassets */,
 				C0A6F4EE21E5E34000DEEDE5 /* LaunchScreen.storyboard */,
@@ -262,7 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0A6F4E821E5E33F00DEEDE5 /* SAViewController.m in Sources */,
+				C0A6F4E821E5E33F00DEEDE5 /* SAMainViewController.m in Sources */,
 				C0A6F4F321E5E34000DEEDE5 /* main.m in Sources */,
 				C0A6F4E521E5E33F00DEEDE5 /* SAAppDelegate.m in Sources */,
 			);
