@@ -8,6 +8,7 @@
 
 #import "SAAppDelegate.h"
 #import "SAMainViewController.h"
+#import "SAMeViewController.h"
 #import "SACommonUtil.h"
 
 @interface SAAppDelegate ()
@@ -46,7 +47,7 @@
     UINavigationController *exploreNavigationController = [[UINavigationController alloc] initWithRootViewController:exploreVC];
     
     //Me
-    SAMainViewController *meVC = [[SAMainViewController alloc] init];
+    SAMeViewController *meVC = [[SAMeViewController alloc] init];
     meVC.title = @"Me";
     tabImage = [[SACommonUtil imageWithColor:[UIColor blueColor] size:CGSizeMake(30, 30)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     tabImageHighlight = [[SACommonUtil imageWithColor:[UIColor grayColor] size:CGSizeMake(30, 30)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
