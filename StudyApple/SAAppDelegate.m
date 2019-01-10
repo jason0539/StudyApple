@@ -8,6 +8,7 @@
 
 #import "SAAppDelegate.h"
 #import "SAMainViewController.h"
+#import "SACommonUtil.h"
 
 @interface SAAppDelegate ()
 
@@ -20,9 +21,44 @@
     // Override point for customization after application launch.
     
     //Init root view controller of the application
-    SAMainViewController *vc = [[SAMainViewController alloc] init];
+//    SAMainViewController *vc = [[SAMainViewController alloc] init];
+//    self.window.backgroundColor = [UIColor whiteColor];
+//    self.window.rootViewController = vc;
+//    [self.window makeKeyAndVisible];
+
+    UIImage *tabImage = nil;
+    UIImage *tabImageHighlight = nil;
+    
+    //Main
+    SAMainViewController *mainVC = [[SAMainViewController alloc] init];
+    mainVC.title = @"Main";
+    tabImage = [[SACommonUtil imageWithColor:[UIColor redColor] size:CGSizeMake(30, 30)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    tabImageHighlight = [[SACommonUtil imageWithColor:[UIColor grayColor] size:CGSizeMake(30,30)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    mainVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:mainVC.title image:tabImage selectedImage:tabImageHighlight];
+    UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:mainVC];
+    
+    //Explore
+    SAMainViewController *exploreVC = [[SAMainViewController alloc] init];
+    exploreVC.title = @"Explore";
+    tabImage = [[SACommonUtil imageWithColor:[UIColor greenColor] size:CGSizeMake(30, 30)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    tabImageHighlight = [[SACommonUtil imageWithColor:[UIColor grayColor] size:CGSizeMake(30, 30)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    exploreVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:exploreVC.title image:tabImage selectedImage:tabImageHighlight];
+    UINavigationController *exploreNavigationController = [[UINavigationController alloc] initWithRootViewController:exploreVC];
+    
+    //Me
+    SAMainViewController *meVC = [[SAMainViewController alloc] init];
+    meVC.title = @"Me";
+    tabImage = [[SACommonUtil imageWithColor:[UIColor blueColor] size:CGSizeMake(30, 30)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    tabImageHighlight = [[SACommonUtil imageWithColor:[UIColor grayColor] size:CGSizeMake(30, 30)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    meVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:meVC.title image:tabImage selectedImage:tabImageHighlight];
+    UINavigationController *meNavigationController = [[UINavigationController alloc] initWithRootViewController:meVC];
+    
+    //TAB bar controller
+    UITabBarController *mainTabBarController = [[UITabBarController alloc] init];
+    mainTabBarController.viewControllers = @[mainNavigationController,exploreNavigationController,meNavigationController];
+    
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = vc;
+    self.window.rootViewController = mainTabBarController;
     [self.window makeKeyAndVisible];
     
     return YES;

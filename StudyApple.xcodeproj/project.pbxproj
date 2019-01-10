@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D0C16FC713FB3D60E141ADE /* libPods-StudyApple.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B886BC5E94092762FE953FD5 /* libPods-StudyApple.a */; };
+		C0839E0A21E6E22800742C27 /* SACommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C0839E0921E6E22800742C27 /* SACommonUtil.m */; };
 		C0A6F4E521E5E33F00DEEDE5 /* SAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A6F4E421E5E33F00DEEDE5 /* SAAppDelegate.m */; };
 		C0A6F4E821E5E33F00DEEDE5 /* SAMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A6F4E721E5E33F00DEEDE5 /* SAMainViewController.m */; };
 		C0A6F4EB21E5E33F00DEEDE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0A6F4E921E5E33F00DEEDE5 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 		0352F17647B9790178C95AE5 /* Pods-StudyApple.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyApple.release.xcconfig"; path = "Pods/Target Support Files/Pods-StudyApple/Pods-StudyApple.release.xcconfig"; sourceTree = "<group>"; };
 		49EB0A5D8A34435CBA0A5E13 /* Pods-StudyApple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyApple.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StudyApple/Pods-StudyApple.debug.xcconfig"; sourceTree = "<group>"; };
 		B886BC5E94092762FE953FD5 /* libPods-StudyApple.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StudyApple.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0839E0921E6E22800742C27 /* SACommonUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SACommonUtil.m; sourceTree = "<group>"; };
 		C0A6F4E021E5E33F00DEEDE5 /* StudyApple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyApple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A6F4E321E5E33F00DEEDE5 /* SAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAAppDelegate.h; sourceTree = "<group>"; };
 		C0A6F4E421E5E33F00DEEDE5 /* SAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAAppDelegate.m; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 		C0A6F50721E5E34000DEEDE5 /* StudyAppleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudyAppleUITests.m; sourceTree = "<group>"; };
 		C0A6F50921E5E34000DEEDE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0A6F51521E5EDD800DEEDE5 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		C0A6F52721E5FD2600DEEDE5 /* SACommonUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SACommonUtil.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,29 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C0839E0B21E6E55700742C27 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				C0839E0D21E6E57200742C27 /* View */,
+				C0839E0C21E6E56800742C27 /* Controller */,
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		C0839E0C21E6E56800742C27 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C0839E0D21E6E57200742C27 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C0A6F4D721E5E33F00DEEDE5 = {
 			isa = PBXGroup;
 			children = (
@@ -120,16 +146,16 @@
 		C0A6F4E221E5E33F00DEEDE5 /* StudyApple */ = {
 			isa = PBXGroup;
 			children = (
-				C0A6F52021E5F6C700DEEDE5 /* Resource */,
-				C0A6F51F21E5F6BA00DEEDE5 /* Feature */,
-				C0A6F51E21E5F6B000DEEDE5 /* Common */,
-				C0A6F51D21E5F69A00DEEDE5 /* Utility */,
 				C0A6F4E321E5E33F00DEEDE5 /* SAAppDelegate.h */,
-				C0A6F4E421E5E33F00DEEDE5 /* SAAppDelegate.m */,
-				C0A6F4EC21E5E34000DEEDE5 /* Assets.xcassets */,
-				C0A6F4EE21E5E34000DEEDE5 /* LaunchScreen.storyboard */,
-				C0A6F4F121E5E34000DEEDE5 /* Info.plist */,
 				C0A6F4F221E5E34000DEEDE5 /* main.m */,
+				C0A6F4E421E5E33F00DEEDE5 /* SAAppDelegate.m */,
+				C0A6F4F121E5E34000DEEDE5 /* Info.plist */,
+				C0A6F4EC21E5E34000DEEDE5 /* Assets.xcassets */,
+				C0A6F51E21E5F6B000DEEDE5 /* Common */,
+				C0A6F51F21E5F6BA00DEEDE5 /* Feature */,
+				C0A6F4EE21E5E34000DEEDE5 /* LaunchScreen.storyboard */,
+				C0A6F52021E5F6C700DEEDE5 /* Resource */,
+				C0A6F51D21E5F69A00DEEDE5 /* Utility */,
 			);
 			path = StudyApple;
 			sourceTree = "<group>";
@@ -162,6 +188,8 @@
 		C0A6F51E21E5F6B000DEEDE5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C0A6F52721E5FD2600DEEDE5 /* SACommonUtil.h */,
+				C0839E0921E6E22800742C27 /* SACommonUtil.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -169,6 +197,7 @@
 		C0A6F51F21E5F6BA00DEEDE5 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				C0839E0B21E6E55700742C27 /* Explore */,
 				C0A6F52321E5F6F500DEEDE5 /* User */,
 				C0A6F52221E5F6EC00DEEDE5 /* Base */,
 				C0A6F52121E5F6E000DEEDE5 /* Main */,
@@ -419,6 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0839E0A21E6E22800742C27 /* SACommonUtil.m in Sources */,
 				C0A6F4E821E5E33F00DEEDE5 /* SAMainViewController.m in Sources */,
 				C0A6F4F321E5E34000DEEDE5 /* main.m in Sources */,
 				C0A6F4E521E5E33F00DEEDE5 /* SAAppDelegate.m in Sources */,
