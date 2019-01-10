@@ -11,6 +11,7 @@
 		C0839E0A21E6E22800742C27 /* SACommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C0839E0921E6E22800742C27 /* SACommonUtil.m */; };
 		C0839E1121E6EE7A00742C27 /* SAMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0839E1021E6EE7A00742C27 /* SAMeViewController.m */; };
 		C0839E1421E6F05600742C27 /* SAExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0839E1321E6F05600742C27 /* SAExploreViewController.m */; };
+		C0839E1721E71DF600742C27 /* SADetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0839E1621E71DF600742C27 /* SADetailViewController.m */; };
 		C0A6F4E521E5E33F00DEEDE5 /* SAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A6F4E421E5E33F00DEEDE5 /* SAAppDelegate.m */; };
 		C0A6F4E821E5E33F00DEEDE5 /* SAMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A6F4E721E5E33F00DEEDE5 /* SAMainViewController.m */; };
 		C0A6F4EB21E5E33F00DEEDE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0A6F4E921E5E33F00DEEDE5 /* Main.storyboard */; };
@@ -48,6 +49,8 @@
 		C0839E1021E6EE7A00742C27 /* SAMeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAMeViewController.m; sourceTree = "<group>"; };
 		C0839E1221E6F02400742C27 /* SAExploreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAExploreViewController.h; sourceTree = "<group>"; };
 		C0839E1321E6F05600742C27 /* SAExploreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAExploreViewController.m; sourceTree = "<group>"; };
+		C0839E1521E71DE400742C27 /* SADetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SADetailViewController.h; sourceTree = "<group>"; };
+		C0839E1621E71DF600742C27 /* SADetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SADetailViewController.m; sourceTree = "<group>"; };
 		C0A6F4E021E5E33F00DEEDE5 /* StudyApple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyApple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A6F4E321E5E33F00DEEDE5 /* SAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAAppDelegate.h; sourceTree = "<group>"; };
 		C0A6F4E421E5E33F00DEEDE5 /* SAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAAppDelegate.m; sourceTree = "<group>"; };
@@ -274,6 +277,8 @@
 			children = (
 				C0A6F4E621E5E33F00DEEDE5 /* SAMainViewController.h */,
 				C0A6F4E721E5E33F00DEEDE5 /* SAMainViewController.m */,
+				C0839E1521E71DE400742C27 /* SADetailViewController.h */,
+				C0839E1621E71DF600742C27 /* SADetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -472,6 +477,7 @@
 				C0A6F4E521E5E33F00DEEDE5 /* SAAppDelegate.m in Sources */,
 				C0839E1421E6F05600742C27 /* SAExploreViewController.m in Sources */,
 				C0839E1121E6EE7A00742C27 /* SAMeViewController.m in Sources */,
+				C0839E1721E71DF600742C27 /* SADetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

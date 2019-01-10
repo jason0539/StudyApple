@@ -9,6 +9,7 @@
 #import "SAMainViewController.h"
 #import <Masonry/Masonry.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import "SADetailViewController.h"
 
 @interface SAMainViewController ()
 
@@ -25,6 +26,15 @@
 }
 
 - (void)setupUI{
+    // Use full screen layout.
+    self.edgesForExtendedLayout = UIRectEdgeAll;
+    self.automaticallyAdjustsScrollViewInsets = YES;
+    self.extendedLayoutIncludesOpaqueBars = YES;
+    
+    // Navigation item.
+    UIBarButtonItem *detailBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Detail" style:UIBarButtonItemStylePlain target:self action:@selector(goToDetailPage)];
+    self.navigationItem.rightBarButtonItem = detailBarButton;
+    
     //define button
     UIButton *helloButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [helloButton setTitle:@"Hello" forState:UIControlStateNormal];
@@ -54,6 +64,12 @@
     [alertController addAction:cancleAction];
     [alertController addAction:okAction];
     [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)goToDetailPage {
+    SADetailViewController *detailViewController = [[SADetailViewController alloc] init];
+    detailViewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 
