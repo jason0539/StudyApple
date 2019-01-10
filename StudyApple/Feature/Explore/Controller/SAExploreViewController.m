@@ -10,12 +10,17 @@
 #import "SAExploreViewController.h"
 #import "SACommonUtil.h"
 #import <Masonry/Masonry.h>
+#import "SAMovieWebService.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <SVProgressHUD/SVProgressHUD.h>
+
 
 NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
 
 //接口继承另外两个接口，并声明变量
 @interface SAExploreViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (strong,nonatomic) UITableView *myTableView;
+@property (strong,nonatomic) NSArray *movieList;
 @end
 
 @implementation SAExploreViewController
@@ -23,6 +28,7 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self setupUI];
+    [self requestData];
 }
 
 -(void)setupUI{
@@ -35,6 +41,20 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
     [self.view addSubview:self.myTableView];
     [self.myTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
+    }];
+}
+
+#pragma mark -Utility
+-(void)requestData{
+    NSDictionary *parameters = @{@"pageLimit":@30,@"pageNum":@1};
+    [SAMovieWebService requestMovieDataWithParameters:parameters start:^{
+        [SVProgressHUD show];
+    } success:^(NSDictionary *result) {
+        self.movieList = [result objectForKey:@"movieList"];
+        [self.myTableView reloadData];
+        [SVProgressHUD dismiss];
+    } failure:^(NSError *error) {
+        [SVProgressHUD dismiss];
     }];
 }
 
@@ -64,19 +84,30 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
-    return @"Header";
+    return @"Movies";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1000;
+    return self.movieList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SAExploreCellIdentifier forIndexPath:indexPath];
-    cell.textLabel.text = @"Hi";
-    cell.imageView.image = [SACommonUtil imageWithColor:[UIColor redColor] size:CGSizeMake(30, 30)];
+    if (indexPath.row >= self.movieList.count) {
+        return nil;
+    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SAExploreCellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SAExploreCellIdentifier];
+    }
+    
+    SAMovie *movie = [self.movieList objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@",movie.name,movie.year];
+    cell.detailTextLabel.text = movie.genres;
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:movie.thumbnailImageURLString] placeholderImage:[SACommonUtil imageWithColor:[UIColor grayColor] size:CGSizeMake(27, 40)] completed:nil];
     cell.layer.shouldRasterize =  YES;
     cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    
     return cell;
 }
 
