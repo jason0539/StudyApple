@@ -10,6 +10,7 @@
 		1D0C16FC713FB3D60E141ADE /* libPods-StudyApple.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B886BC5E94092762FE953FD5 /* libPods-StudyApple.a */; };
 		C0839E0A21E6E22800742C27 /* SACommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C0839E0921E6E22800742C27 /* SACommonUtil.m */; };
 		C0839E1121E6EE7A00742C27 /* SAMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0839E1021E6EE7A00742C27 /* SAMeViewController.m */; };
+		C0839E1421E6F05600742C27 /* SAExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0839E1321E6F05600742C27 /* SAExploreViewController.m */; };
 		C0A6F4E521E5E33F00DEEDE5 /* SAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A6F4E421E5E33F00DEEDE5 /* SAAppDelegate.m */; };
 		C0A6F4E821E5E33F00DEEDE5 /* SAMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A6F4E721E5E33F00DEEDE5 /* SAMainViewController.m */; };
 		C0A6F4EB21E5E33F00DEEDE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0A6F4E921E5E33F00DEEDE5 /* Main.storyboard */; };
@@ -45,6 +46,8 @@
 		C0839E0921E6E22800742C27 /* SACommonUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SACommonUtil.m; sourceTree = "<group>"; };
 		C0839E0F21E6EE2700742C27 /* SAMeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAMeViewController.h; sourceTree = "<group>"; };
 		C0839E1021E6EE7A00742C27 /* SAMeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAMeViewController.m; sourceTree = "<group>"; };
+		C0839E1221E6F02400742C27 /* SAExploreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAExploreViewController.h; sourceTree = "<group>"; };
+		C0839E1321E6F05600742C27 /* SAExploreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAExploreViewController.m; sourceTree = "<group>"; };
 		C0A6F4E021E5E33F00DEEDE5 /* StudyApple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyApple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A6F4E321E5E33F00DEEDE5 /* SAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAAppDelegate.h; sourceTree = "<group>"; };
 		C0A6F4E421E5E33F00DEEDE5 /* SAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAAppDelegate.m; sourceTree = "<group>"; };
@@ -112,6 +115,8 @@
 		C0839E0C21E6E56800742C27 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C0839E1221E6F02400742C27 /* SAExploreViewController.h */,
+				C0839E1321E6F05600742C27 /* SAExploreViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -465,6 +470,7 @@
 				C0A6F4E821E5E33F00DEEDE5 /* SAMainViewController.m in Sources */,
 				C0A6F4F321E5E34000DEEDE5 /* main.m in Sources */,
 				C0A6F4E521E5E33F00DEEDE5 /* SAAppDelegate.m in Sources */,
+				C0839E1421E6F05600742C27 /* SAExploreViewController.m in Sources */,
 				C0839E1121E6EE7A00742C27 /* SAMeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
