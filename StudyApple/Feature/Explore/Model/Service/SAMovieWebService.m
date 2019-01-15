@@ -17,8 +17,6 @@ static NSString * const SARequestMovieDataURL = @"http://api.douban.com/v2/movie
 #pragma mark -Movie data webservice
 + (void)requestMovieDataWithParameters:(id)parameters start:(void (^)(void))start success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure{
     start();
-    start();
-    
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     

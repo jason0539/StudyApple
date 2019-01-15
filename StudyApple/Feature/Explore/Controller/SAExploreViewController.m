@@ -75,7 +75,7 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 44;
+    return 100;
 }
 
 #pragma mark - UITableViewDataSource

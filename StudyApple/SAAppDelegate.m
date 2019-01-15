@@ -57,7 +57,7 @@
     
     //TAB bar controller
     UITabBarController *mainTabBarController = [[UITabBarController alloc] init];
-    mainTabBarController.viewControllers = @[mainNavigationController,exploreNavigationController,meNavigationController];
+    mainTabBarController.viewControllers = @[exploreNavigationController,mainNavigationController,meNavigationController];
     
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = mainTabBarController;
