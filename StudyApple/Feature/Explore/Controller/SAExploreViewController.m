@@ -63,6 +63,8 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
             [SVProgressHUD show];
         }
     } success:^(NSDictionary *result) {
+//        self.movieList = [NSMutableArray array];
+        [self.movieList removeAllObjects];
         [self.movieList addObjectsFromArray:[result objectForKey:@"movieList"]];
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
@@ -77,8 +79,6 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
 }
 
 -(void)refresh{
-//    self.movieList = [NSMutableArray array];
-    //    [self.movieList removeAllObjects];
     self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"加载中..." ];
     [self requestData:false];
 }
