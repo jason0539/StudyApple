@@ -39,6 +39,12 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
     //tableview
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:SAExploreCellIdentifier];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    
+    //refreshController
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新" ];
+    [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refresh;
 }
 
 #pragma mark -Utility
