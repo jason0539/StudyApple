@@ -21,6 +21,23 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
 @property (strong,nonatomic) NSMutableArray *movieList;
 @end
 
+@interface SARefreshControl : UIRefreshControl
+
+@end
+
+@implementation SARefreshControl
+
+-(void)beginRefreshing{
+    [super beginRefreshing];
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
+}
+
+-(void)endRefreshing{
+    [super endRefreshing];
+}
+
+@end
+
 //SAExploreViewController实现
 @implementation SAExploreViewController
 
@@ -34,7 +51,7 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self setupUI];
-    [self requestData:true];
+    [self.refreshControl beginRefreshing];
 }
 
 -(void)setupUI{
@@ -48,8 +65,7 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
     //refreshController
-    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-    refresh.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新" ];
+    UIRefreshControl *refresh = [[SARefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
 }
@@ -63,8 +79,6 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
             [SVProgressHUD show];
         }
     } success:^(NSDictionary *result) {
-//        self.movieList = [NSMutableArray array];
-        [self.movieList removeAllObjects];
         [self.movieList addObjectsFromArray:[result objectForKey:@"movieList"]];
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
@@ -80,7 +94,20 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
 
 -(void)refresh{
     self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"加载中..." ];
-    [self requestData:false];
+    NSDictionary *parameters = @{@"pageLimit":@30,@"pageNum":@1};
+    [SAMovieWebService requestMovieDataWithParameters:parameters start:^{
+        
+    } success:^(NSDictionary *result) {
+        //self.movieList = [NSMutableArray array];
+        [self.movieList removeAllObjects];
+        [self.movieList addObjectsFromArray:[result objectForKey:@"movieList"]];
+        [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新" ];
+    } failure:^(NSError *error) {
+        [self.refreshControl endRefreshing];
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新" ];
+    }];
 }
 
 #pragma mark - UITableViewDelegate
