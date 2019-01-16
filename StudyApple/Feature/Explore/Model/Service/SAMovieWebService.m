@@ -65,7 +65,7 @@ static NSString * const SARequestMovieDataURL = @"http://api.douban.com/v2/movie
         
         [movieList addObject:movie];
     }
-    return [movieList copy];
+    return [movieList mutableCopy];
 }
 
 @end

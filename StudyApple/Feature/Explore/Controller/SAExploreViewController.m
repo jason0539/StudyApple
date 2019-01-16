@@ -24,10 +24,17 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
 //SAExploreViewController实现
 @implementation SAExploreViewController
 
+- (NSMutableArray *)movieList{
+    if (!_movieList) {
+        _movieList = [NSMutableArray array];
+    }
+    return _movieList;
+}
+
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self setupUI];
-    [self requestData];
+    [self requestData:true];
 }
 
 -(void)setupUI{
@@ -48,22 +55,32 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
 }
 
 #pragma mark -Utility
--(void)requestData{
+-(void)requestData:(BOOL)showProgress{
     NSLog(@"requestData");
     NSDictionary *parameters = @{@"pageLimit":@30,@"pageNum":@1};
     [SAMovieWebService requestMovieDataWithParameters:parameters start:^{
-        [SVProgressHUD show];
+        if (showProgress) {
+            [SVProgressHUD show];
+        }
     } success:^(NSDictionary *result) {
-        self.movieList = [result objectForKey:@"movieList"];
+        [self.movieList addObjectsFromArray:[result objectForKey:@"movieList"]];
         [self.tableView reloadData];
-        [SVProgressHUD dismiss];
+        [self.refreshControl endRefreshing];
+        if (showProgress) {
+            [SVProgressHUD dismiss];
+        }
     } failure:^(NSError *error) {
-        [SVProgressHUD dismiss];
+        if (showProgress) {
+            [SVProgressHUD dismiss];
+        }
     }];
 }
 
 -(void)refresh{
-    
+//    self.movieList = [NSMutableArray array];
+    //    [self.movieList removeAllObjects];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"加载中..." ];
+    [self requestData:false];
 }
 
 #pragma mark - UITableViewDelegate
@@ -81,17 +98,13 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
     return 1;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
-    return @"Movies";
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     NSLog(@"numberOfRowsInSection");
     return self.movieList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"cellForRowAtIndexPath");
+    NSLog(@"cellForRowAtIndexPath %@",indexPath);
     if (indexPath.row >= self.movieList.count) {
         return nil;
     }
