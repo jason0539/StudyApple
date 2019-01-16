@@ -12,6 +12,8 @@
 		C0839E1121E6EE7A00742C27 /* SAMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0839E1021E6EE7A00742C27 /* SAMeViewController.m */; };
 		C0839E1421E6F05600742C27 /* SAExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0839E1321E6F05600742C27 /* SAExploreViewController.m */; };
 		C0839E1721E71DF600742C27 /* SADetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0839E1621E71DF600742C27 /* SADetailViewController.m */; };
+		C0839E1D21E723EA00742C27 /* SAMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = C0839E1C21E723EA00742C27 /* SAMovie.m */; };
+		C0839E2021E7240A00742C27 /* SAMovieWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = C0839E1F21E7240A00742C27 /* SAMovieWebService.m */; };
 		C0A6F4E521E5E33F00DEEDE5 /* SAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A6F4E421E5E33F00DEEDE5 /* SAAppDelegate.m */; };
 		C0A6F4E821E5E33F00DEEDE5 /* SAMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A6F4E721E5E33F00DEEDE5 /* SAMainViewController.m */; };
 		C0A6F4EB21E5E33F00DEEDE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0A6F4E921E5E33F00DEEDE5 /* Main.storyboard */; };
@@ -51,6 +53,10 @@
 		C0839E1321E6F05600742C27 /* SAExploreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAExploreViewController.m; sourceTree = "<group>"; };
 		C0839E1521E71DE400742C27 /* SADetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SADetailViewController.h; sourceTree = "<group>"; };
 		C0839E1621E71DF600742C27 /* SADetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SADetailViewController.m; sourceTree = "<group>"; };
+		C0839E1B21E723DE00742C27 /* SAMovie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAMovie.h; sourceTree = "<group>"; };
+		C0839E1C21E723EA00742C27 /* SAMovie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAMovie.m; sourceTree = "<group>"; };
+		C0839E1E21E723FD00742C27 /* SAMovieWebService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAMovieWebService.h; sourceTree = "<group>"; };
+		C0839E1F21E7240A00742C27 /* SAMovieWebService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAMovieWebService.m; sourceTree = "<group>"; };
 		C0A6F4E021E5E33F00DEEDE5 /* StudyApple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyApple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A6F4E321E5E33F00DEEDE5 /* SAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAAppDelegate.h; sourceTree = "<group>"; };
 		C0A6F4E421E5E33F00DEEDE5 /* SAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAAppDelegate.m; sourceTree = "<group>"; };
@@ -67,7 +73,7 @@
 		C0A6F50321E5E34000DEEDE5 /* StudyAppleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudyAppleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A6F50721E5E34000DEEDE5 /* StudyAppleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudyAppleUITests.m; sourceTree = "<group>"; };
 		C0A6F50921E5E34000DEEDE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C0A6F51521E5EDD800DEEDE5 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		C0A6F51521E5EDD800DEEDE5 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C0A6F52721E5FD2600DEEDE5 /* SACommonUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SACommonUtil.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +115,7 @@
 		C0839E0B21E6E55700742C27 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				C0839E1821E723B700742C27 /* Model */,
 				C0839E0D21E6E57200742C27 /* View */,
 				C0839E0C21E6E56800742C27 /* Controller */,
 			);
@@ -138,6 +145,33 @@
 				C0839E1021E6EE7A00742C27 /* SAMeViewController.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		C0839E1821E723B700742C27 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C0839E1A21E723C800742C27 /* Service */,
+				C0839E1921E723C000742C27 /* Entity */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C0839E1921E723C000742C27 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				C0839E1B21E723DE00742C27 /* SAMovie.h */,
+				C0839E1C21E723EA00742C27 /* SAMovie.m */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		C0839E1A21E723C800742C27 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C0839E1E21E723FD00742C27 /* SAMovieWebService.h */,
+				C0839E1F21E7240A00742C27 /* SAMovieWebService.m */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		C0A6F4D721E5E33F00DEEDE5 = {
@@ -471,7 +505,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0839E1D21E723EA00742C27 /* SAMovie.m in Sources */,
 				C0839E0A21E6E22800742C27 /* SACommonUtil.m in Sources */,
+				C0839E2021E7240A00742C27 /* SAMovieWebService.m in Sources */,
 				C0A6F4E821E5E33F00DEEDE5 /* SAMainViewController.m in Sources */,
 				C0A6F4F321E5E34000DEEDE5 /* main.m in Sources */,
 				C0A6F4E521E5E33F00DEEDE5 /* SAAppDelegate.m in Sources */,
