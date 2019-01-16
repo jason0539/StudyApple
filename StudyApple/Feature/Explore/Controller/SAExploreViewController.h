@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SAExploreViewController : UIViewController
+@interface SAExploreViewController : UITableViewController
 
 @end
 

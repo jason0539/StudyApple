@@ -14,15 +14,14 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
-
 NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
 
 //接口继承另外两个接口，并声明变量
 @interface SAExploreViewController () <UITableViewDataSource,UITableViewDelegate>
-@property (strong,nonatomic) UITableView *myTableView;
 @property (strong,nonatomic) NSMutableArray *movieList;
 @end
 
+//SAExploreViewController实现
 @implementation SAExploreViewController
 
 - (void)viewDidLoad{
@@ -37,11 +36,9 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
     self.edgesForExtendedLayout = UIRectEdgeAll;
     self.extendedLayoutIncludesOpaqueBars = YES;
     
-    //mytableview
-    [self.view addSubview:self.myTableView];
-    [self.myTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
-    }];
+    //tableview
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:SAExploreCellIdentifier];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 }
 
 #pragma mark -Utility
@@ -52,23 +49,15 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
         [SVProgressHUD show];
     } success:^(NSDictionary *result) {
         self.movieList = [result objectForKey:@"movieList"];
-        [self.myTableView reloadData];
+        [self.tableView reloadData];
         [SVProgressHUD dismiss];
     } failure:^(NSError *error) {
         [SVProgressHUD dismiss];
     }];
 }
 
-#pragma mark - Property
--(UITableView *)myTableView{
-    if (!_myTableView) {
-        _myTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-        [_myTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:SAExploreCellIdentifier];
-        _myTableView.delegate = self;
-        _myTableView.dataSource = self;
-        _myTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    }
-    return _myTableView;
+-(void)refresh{
+    
 }
 
 #pragma mark - UITableViewDelegate
