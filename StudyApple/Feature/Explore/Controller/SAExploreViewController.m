@@ -32,9 +32,9 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
 }
 
 -(void)setupUI{
+    NSLog(@"setupUI");
     //full screen layout
     self.edgesForExtendedLayout = UIRectEdgeAll;
-    self.automaticallyAdjustsScrollViewInsets = YES;
     self.extendedLayoutIncludesOpaqueBars = YES;
     
     //mytableview
@@ -46,6 +46,7 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
 
 #pragma mark -Utility
 -(void)requestData{
+    NSLog(@"requestData");
     NSDictionary *parameters = @{@"pageLimit":@30,@"pageNum":@1};
     [SAMovieWebService requestMovieDataWithParameters:parameters start:^{
         [SVProgressHUD show];
@@ -65,17 +66,19 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
         [_myTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:SAExploreCellIdentifier];
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
+        _myTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     }
     return _myTableView;
 }
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"didSelectRowAtIndexPath");
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 100;
+    return 200;
 }
 
 #pragma mark - UITableViewDataSource
@@ -88,10 +91,12 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    NSLog(@"numberOfRowsInSection");
     return self.movieList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"cellForRowAtIndexPath");
     if (indexPath.row >= self.movieList.count) {
         return nil;
     }
