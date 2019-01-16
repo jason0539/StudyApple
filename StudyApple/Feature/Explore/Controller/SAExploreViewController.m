@@ -20,7 +20,7 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
 //接口继承另外两个接口，并声明变量
 @interface SAExploreViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (strong,nonatomic) UITableView *myTableView;
-@property (strong,nonatomic) NSArray *movieList;
+@property (strong,nonatomic) NSMutableArray *movieList;
 @end
 
 @implementation SAExploreViewController

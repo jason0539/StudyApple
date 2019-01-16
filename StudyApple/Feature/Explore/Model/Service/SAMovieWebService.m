@@ -33,7 +33,7 @@ static NSString * const SARequestMovieDataURL = @"http://api.douban.com/v2/movie
             failure(error);
         }else{
             NSLog(@"%@ %@",response,responseObject);
-            NSArray *movieList = [SAMovieWebService parseMovieListFromData:responseObject];
+            NSMutableArray *movieList = [SAMovieWebService parseMovieListFromData:responseObject];
             NSDictionary * result = @{@"movieList":movieList};
             success(result);
         }
@@ -42,7 +42,7 @@ static NSString * const SARequestMovieDataURL = @"http://api.douban.com/v2/movie
 }
 
 #pragma mark - Utility
-+(NSArray *) parseMovieListFromData:(NSDictionary *)data{
++(NSMutableArray *) parseMovieListFromData:(NSDictionary *)data{
     if (!data) {
         return nil;
     }
