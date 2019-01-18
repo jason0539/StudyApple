@@ -23,6 +23,7 @@
 		C0A6F4FD21E5E34000DEEDE5 /* StudyAppleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A6F4FC21E5E34000DEEDE5 /* StudyAppleTests.m */; };
 		C0A6F50821E5E34000DEEDE5 /* StudyAppleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A6F50721E5E34000DEEDE5 /* StudyAppleUITests.m */; };
 		C0A6F51621E5EDD800DEEDE5 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = C0A6F51521E5EDD800DEEDE5 /* Podfile */; };
+		C0E61E9C21EF315E00D0268D /* SALoadMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E61E9B21EF315E00D0268D /* SALoadMoreView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,8 @@
 		C0A6F50921E5E34000DEEDE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0A6F51521E5EDD800DEEDE5 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C0A6F52721E5FD2600DEEDE5 /* SACommonUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SACommonUtil.h; sourceTree = "<group>"; };
+		C0E61E9A21EF30F600D0268D /* SALoadMoreView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SALoadMoreView.h; sourceTree = "<group>"; };
+		C0E61E9B21EF315E00D0268D /* SALoadMoreView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SALoadMoreView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +130,8 @@
 			children = (
 				C0839E1221E6F02400742C27 /* SAExploreViewController.h */,
 				C0839E1321E6F05600742C27 /* SAExploreViewController.m */,
+				C0E61E9A21EF30F600D0268D /* SALoadMoreView.h */,
+				C0E61E9B21EF315E00D0268D /* SALoadMoreView.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -506,6 +511,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0839E1D21E723EA00742C27 /* SAMovie.m in Sources */,
+				C0E61E9C21EF315E00D0268D /* SALoadMoreView.m in Sources */,
 				C0839E0A21E6E22800742C27 /* SACommonUtil.m in Sources */,
 				C0839E2021E7240A00742C27 /* SAMovieWebService.m in Sources */,
 				C0A6F4E821E5E33F00DEEDE5 /* SAMainViewController.m in Sources */,

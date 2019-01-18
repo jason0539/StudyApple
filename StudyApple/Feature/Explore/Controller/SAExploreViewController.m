@@ -13,12 +13,14 @@
 #import "SAMovieWebService.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import "SALoadMoreView.h"
 
 NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
 
 //接口继承另外两个接口，并声明变量
 @interface SAExploreViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (strong,nonatomic) NSMutableArray *movieList;
+@property (strong,nonatomic) SALoadMoreView *loadMoreView;
 @end
 
 @interface SARefreshControl : UIRefreshControl
@@ -68,6 +70,10 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
     UIRefreshControl *refresh = [[SARefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
+    
+    //loadMoreView
+    self.loadMoreView = [[SALoadMoreView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 44)];
+    self.tableView.tableFooterView = self.loadMoreView;
 }
 
 #pragma mark -Utility
@@ -75,20 +81,13 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
     NSLog(@"requestData");
     NSDictionary *parameters = @{@"pageLimit":@30,@"pageNum":@1};
     [SAMovieWebService requestMovieDataWithParameters:parameters start:^{
-        if (showProgress) {
-            [SVProgressHUD show];
-        }
+        
     } success:^(NSDictionary *result) {
         [self.movieList addObjectsFromArray:[result objectForKey:@"movieList"]];
         [self.tableView reloadData];
-        [self.refreshControl endRefreshing];
-        if (showProgress) {
-            [SVProgressHUD dismiss];
-        }
+        [self.loadMoreView stopAnimation];
     } failure:^(NSError *error) {
-        if (showProgress) {
-            [SVProgressHUD dismiss];
-        }
+        
     }];
 }
 
@@ -110,6 +109,13 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
     }];
 }
 
+-(void)loadMore{
+    NSLog(@"loadMore");
+    [self requestData:false];
+    //如果已经结束
+//    [self.loadMoreView noMoreData];
+}
+
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"didSelectRowAtIndexPath");
@@ -126,12 +132,12 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSLog(@"numberOfRowsInSection");
+    NSLog(@"numberOfRowsInSection %d",self.movieList.count);
     return self.movieList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"cellForRowAtIndexPath %@",indexPath);
+//    NSLog(@"cellForRowAtIndexPath %@",indexPath);
     if (indexPath.row >= self.movieList.count) {
         return nil;
     }
@@ -149,6 +155,18 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
     cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
     
     return cell;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat currentOffsetY = scrollView.contentOffset.y;
+    /*self.refreshControl.isRefreshing == NO加这个条件是为了防止下面的情况发生：
+     每次进入UITableView，表格都会沉降一段距离，这个时候就会导致currentOffsetY + scrollView.frame.size.height   > scrollView.contentSize.height 被触发，从而触发loadMore方法，而不会触发refresh方法。
+     */
+    if ( currentOffsetY + scrollView.frame.size.height  > scrollView.contentSize.height
+        &&  self.refreshControl.isRefreshing == NO  && self.loadMoreView.isAnimating == NO && self.loadMoreView.tipsLabel.isHidden ){
+        [self.loadMoreView startAnimation];//开始旋转菊花
+        [self loadMore];
+    }
 }
 
 @end

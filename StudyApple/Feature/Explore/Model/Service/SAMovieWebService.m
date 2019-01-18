@@ -32,7 +32,6 @@ static NSString * const SARequestMovieDataURL = @"http://api.douban.com/v2/movie
             NSLog(@"Error:%@",error);
             failure(error);
         }else{
-            NSLog(@"%@ %@",response,responseObject);
             NSMutableArray *movieList = [SAMovieWebService parseMovieListFromData:responseObject];
             NSDictionary * result = @{@"movieList":movieList};
             success(result);
@@ -49,6 +48,7 @@ static NSString * const SARequestMovieDataURL = @"http://api.douban.com/v2/movie
     
     NSMutableArray *movieList = [[NSMutableArray alloc] init];
     NSArray *movieDataList = [data objectForKey:@"subjects"];
+    NSLog(@"parseMovieListFromData: %d",movieDataList.count);
     for (int32_t i = 0; i < movieDataList.count; i ++) {
         SAMovie *movie = [[SAMovie alloc] init];
         
