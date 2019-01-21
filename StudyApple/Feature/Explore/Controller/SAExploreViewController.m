@@ -19,6 +19,8 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
 
 //接口继承另外两个接口，并声明变量
 @interface SAExploreViewController () <UITableViewDataSource,UITableViewDelegate>
+@property (assign, nonatomic) long currStart;
+@property (assign, nonatomic) long total;
 @property (strong,nonatomic) NSMutableArray *movieList;
 @property (strong,nonatomic) SALoadMoreView *loadMoreView;
 @end
@@ -79,41 +81,51 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
 #pragma mark -Utility
 -(void)requestData:(BOOL)showProgress{
     NSLog(@"requestData");
-    NSDictionary *parameters = @{@"pageLimit":@30,@"pageNum":@1};
+    
+    [self.loadMoreView restartLoadData];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"加载中..." ];
+    NSDictionary *parameters = @{@"pageLimit":@10,@"start":@(_currStart)};
     [SAMovieWebService requestMovieDataWithParameters:parameters start:^{
         
     } success:^(NSDictionary *result) {
+        NSLog(@"获取数据成功");
+        if (self.currStart == 0) {
+            NSLog(@"刷新或是加载首页，清除数据");
+            //self.movieList = [NSMutableArray array];
+            [self.movieList removeAllObjects];
+        }
+        
         [self.movieList addObjectsFromArray:[result objectForKey:@"movieList"]];
+        self.total = [[result objectForKey:@"total"] longValue];
+        if (self.movieList.count < self.total) {
+            NSLog(@"还有下一页数据可以加载");
+            [self.loadMoreView restartLoadData];
+        }else{
+            NSLog(@"已经没有数据可以加载");
+            [self.loadMoreView noMoreData];
+        }
+        
+        
         [self.tableView reloadData];
         [self.loadMoreView stopAnimation];
+        [self.refreshControl endRefreshing];
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新" ];
     } failure:^(NSError *error) {
-        
+        [self.refreshControl endRefreshing];
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新" ];
     }];
 }
 
 -(void)refresh{
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"加载中..." ];
-    NSDictionary *parameters = @{@"pageLimit":@30,@"pageNum":@1};
-    [SAMovieWebService requestMovieDataWithParameters:parameters start:^{
-        
-    } success:^(NSDictionary *result) {
-        //self.movieList = [NSMutableArray array];
-        [self.movieList removeAllObjects];
-        [self.movieList addObjectsFromArray:[result objectForKey:@"movieList"]];
-        [self.tableView reloadData];
-        [self.refreshControl endRefreshing];
-        self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新" ];
-    } failure:^(NSError *error) {
-        [self.refreshControl endRefreshing];
-        self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新" ];
-    }];
+    NSLog(@"refresh");
+    _currStart = 0;
+    [self requestData:false];
 }
 
 -(void)loadMore{
     NSLog(@"loadMore");
+    _currStart = _movieList.count;
     [self requestData:false];
-    //如果已经结束
-//    [self.loadMoreView noMoreData];
 }
 
 #pragma mark - UITableViewDelegate
@@ -164,6 +176,7 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
      */
     if ( currentOffsetY + scrollView.frame.size.height  > scrollView.contentSize.height
         &&  self.refreshControl.isRefreshing == NO  && self.loadMoreView.isAnimating == NO && self.loadMoreView.tipsLabel.isHidden ){
+        NSLog(@"到达底部，加载更多");
         [self.loadMoreView startAnimation];//开始旋转菊花
         [self loadMore];
     }

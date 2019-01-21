@@ -21,8 +21,9 @@ static NSString * const SARequestMovieDataURL = @"http://api.douban.com/v2/movie
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
     NSString *pageLimit = [NSString stringWithFormat:@"%d",(int32_t)[parameters[@"pageLimit"] intValue]];
-    NSString *pageNum = [NSString stringWithFormat:@"%d",(int32_t)[parameters[@"pageNum"] intValue]];
+    NSString *pageNum = [NSString stringWithFormat:@"%d",(int32_t)[parameters[@"start"] intValue]];
     NSString *URLString = [NSString stringWithFormat:SARequestMovieDataURL,pageLimit,pageNum];
+    NSLog(URLString);
     NSURL *URL = [NSURL URLWithString:URLString];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
@@ -33,7 +34,9 @@ static NSString * const SARequestMovieDataURL = @"http://api.douban.com/v2/movie
             failure(error);
         }else{
             NSMutableArray *movieList = [SAMovieWebService parseMovieListFromData:responseObject];
-            NSDictionary * result = @{@"movieList":movieList};
+            long count = [[responseObject valueForKey:@"count"] longValue];
+            long total = [[responseObject objectForKey:@"total"] longValue];
+            NSDictionary *result = @{@"movieList":movieList,@"total":@(total),@"count":@(count)};
             success(result);
         }
     }];
