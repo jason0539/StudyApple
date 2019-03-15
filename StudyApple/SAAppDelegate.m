@@ -48,7 +48,7 @@
     UINavigationController *exploreNavigationController = [[UINavigationController alloc] initWithRootViewController:exploreVC];
     
     //Me
-    SAMeViewController *meVC = [[SAMeViewController alloc] init];
+    SAMeViewController *meVC = [[UIStoryboard storyboardWithName:@"Me" bundle:nil] instantiateInitialViewController];
     meVC.title = @"Me";
     tabImage = [[SACommonUtil imageWithColor:[UIColor blueColor] size:CGSizeMake(30, 30)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     tabImageHighlight = [[SACommonUtil imageWithColor:[UIColor grayColor] size:CGSizeMake(30, 30)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
