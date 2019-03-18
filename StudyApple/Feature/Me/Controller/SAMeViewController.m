@@ -10,6 +10,12 @@
 #import "SAMeViewController.h"
 #import <Masonry/Masonry.h>
 
+@interface SAMeViewController()
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
+@property (weak, nonatomic) IBOutlet UITextField *numberField;
+
+@end
+
 @implementation SAMeViewController
 
 - (void)viewDidLoad{
@@ -21,6 +27,15 @@
 - (void)setupUI{
 
     
+}
+
+- (IBAction)textFieldDoneEditing:(id)sender {
+    [sender resignFirstResponder];
+}
+
+- (IBAction)backgroundTap:(id)sender{
+    [self.nameField resignFirstResponder];
+    [self.numberField resignFirstResponder];
 }
 
 @end

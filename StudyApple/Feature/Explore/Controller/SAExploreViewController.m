@@ -14,6 +14,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "SALoadMoreView.h"
+#import "SAMovieCell.h"
 
 NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
 
@@ -65,7 +66,7 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
     self.extendedLayoutIncludesOpaqueBars = YES;
     
     //tableview
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:SAExploreCellIdentifier];
+    [self.tableView registerClass:[SAMovieCell class] forCellReuseIdentifier:SAExploreCellIdentifier];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
     //refreshController
@@ -153,18 +154,15 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
     if (indexPath.row >= self.movieList.count) {
         return nil;
     }
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SAExploreCellIdentifier];
+    
+    SAMovieCell *cell = [tableView dequeueReusableCellWithIdentifier:SAExploreCellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SAExploreCellIdentifier];
+        cell = [[SAMovieCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SAExploreCellIdentifier];
     }
     
     SAMovie *movie = [self.movieList objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@",movie.name,movie.year];
-    cell.detailTextLabel.text = movie.genres;
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:movie.thumbnailImageURLString] placeholderImage:[SACommonUtil imageWithColor:[UIColor grayColor] size:CGSizeMake(27, 40)] completed:nil];
-    cell.layer.shouldRasterize =  YES;
-    cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    [cell config:movie];
     
     return cell;
 }
