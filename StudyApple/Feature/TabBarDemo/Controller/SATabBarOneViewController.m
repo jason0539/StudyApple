@@ -8,13 +8,14 @@
 
 #import "SATabBarOneViewController.h"
 
-#define kFillingComponent 0
-#define kBreadComponent   1
+#define kStateComponent 0
+#define kZipComponent   1
 
 @interface SATabBarOneViewController ()
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
-@property (strong, nonatomic) NSArray *fillingTypes;
-@property (strong, nonatomic) NSArray *breadTypes;
+@property (strong, nonatomic) NSDictionary *stateZips;
+@property (strong, nonatomic) NSArray *states;
+@property (strong, nonatomic) NSArray *zips;
 
 @end
 
@@ -23,29 +24,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.fillingTypes = @[@"Ham", @"Turkey", @"Peanut Butter", @"Tuna Salad",
-                          @"Chicken Salad", @"Roast Beef", @"Vegemite"];
-    self.breadTypes = @[@"White", @"Whole Wheat", @"Rye", @"Sourdough",
-                        @"Seven Grain"];
+    NSBundle *bundle = [NSBundle mainBundle];
+    
+    NSURL *statedictionaryPlistURL = [bundle URLForResource:@"statedictionary" withExtension:@"plist"];
+    //数据集（洲、邮编）
+    self.stateZips = [NSDictionary dictionaryWithContentsOfURL:statedictionaryPlistURL];
+    //所有州
+    NSArray *allStates = [self.stateZips allKeys];
+    NSArray *sortedStates = [allStates sortedArrayUsingSelector:@selector(compare:)];
+    self.states = sortedStates;
+    //当前选中的州的所有邮编
+    NSString *selectedState = self.states[0];
+    self.zips = self.stateZips[selectedState];
+    
 }
 - (IBAction)buttonPressed:(UIButton *)sender {
-    NSInteger fillingRow = [self.pickerView selectedRowInComponent:
-                            kFillingComponent];
-    NSInteger breadRow = [self.pickerView selectedRowInComponent:
-                    kBreadComponent];
+    NSInteger stateRow = [self.pickerView
+                          selectedRowInComponent:kStateComponent];
+    NSInteger zipRow = [self.pickerView
+                        selectedRowInComponent:kZipComponent];
     
+    NSString *state = self.states[stateRow];
+    NSString *zip = self.zips[zipRow];
     
-    NSString *filling = self.fillingTypes[fillingRow];
-    NSString *bread = self.breadTypes[breadRow];
-    
+    NSString *title = [[NSString alloc] initWithFormat:
+                       @"You selected zip code %@.", zip];
     NSString *message = [[NSString alloc] initWithFormat:
-                         @"Your %@ on %@ bread will be right up.", filling, bread];
+                         @"%@ is in %@", zip, state];
     
     UIAlertController *alert =
-    [UIAlertController alertControllerWithTitle:@"Thank you for your order"
+    [UIAlertController alertControllerWithTitle:title
                                         message:message
                                  preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Great!"
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK"
                                                      style:UIAlertActionStyleDefault handler:nil];
     [alert addAction:action];
     [self presentViewController:alert animated:YES completion:nil];
@@ -68,19 +79,39 @@
 }
 
 - (NSInteger)pickerView:(nonnull UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if (component == kBreadComponent) {
-        return self.breadTypes.count;
+    if (component == kStateComponent) {
+        return self.states.count;
     }else{
-        return self.fillingTypes.count;
+        return self.zips.count;
     }
 }
 
 #pragma mark Picker Delegate Methods
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    if (component == kBreadComponent) {
-        return self.breadTypes[row];
+    if (component == kStateComponent) {
+        return self.states[row];
     }else{
-        return self.fillingTypes[row];
+        return self.zips[row];
+    }
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    if (component == kStateComponent) {
+        NSString *selectedState = self.states[row];
+        self.zips = self.stateZips[selectedState];
+        [self.pickerView reloadComponent:kZipComponent];
+        [self.pickerView selectRow:0
+                        inComponent:kZipComponent
+                               animated:YES];
+    }
+}
+
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component{
+    CGFloat pickerWidth = pickerView.bounds.size.width;
+    if (component == kZipComponent) {
+        return pickerWidth/3;
+    } else {
+        return 2 * pickerWidth/3;
     }
 }
 
