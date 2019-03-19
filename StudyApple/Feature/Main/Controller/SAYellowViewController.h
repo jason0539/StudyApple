@@ -7,6 +7,6 @@
 //
 #import <UIKit/UIKit.h>
 
-@interface SADetailViewController : UIViewController
+@interface SAYellowViewController : UIViewController
 
 @end

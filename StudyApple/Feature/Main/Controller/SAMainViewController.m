@@ -9,10 +9,12 @@
 #import "SAMainViewController.h"
 #import <Masonry/Masonry.h>
 #import <SVProgressHUD/SVProgressHUD.h>
-#import "SADetailViewController.h"
+#import "SAYellowViewController.h"
+#import "SABlueViewController.h"
 
 @interface SAMainViewController ()
-
+@property (strong,nonatomic) SAYellowViewController *yellowVC;
+@property (strong,nonatomic) SABlueViewController *blueVC;
 @end
 
 @implementation SAMainViewController
@@ -21,56 +23,54 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    //Setup
-    [self setupUI];
+    NSLog(@"SAMainViewController viewDidLoad");
+    self.blueVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Blue"];
+    self.blueVC.view.frame = self.view.frame;
+    [self switchViewFromViewController:nil toViewController:self.blueVC];
 }
 
-- (void)setupUI{
-    // Use full screen layout.
-    self.edgesForExtendedLayout = UIRectEdgeAll;
-    self.automaticallyAdjustsScrollViewInsets = YES;
-    self.extendedLayoutIncludesOpaqueBars = YES;
+-(IBAction)switchViews:(id)sender{
+    //视情况创建vc
+    if (!self.yellowVC.view.superview) {
+        if (!self.yellowVC) {
+            self.yellowVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Yellow"];
+        }
+    }else{
+        if (!self.blueVC) {
+            self.blueVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Blue"];
+        }
+    }
     
-    // Navigation item.
-    UIBarButtonItem *detailBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Detail" style:UIBarButtonItemStylePlain target:self action:@selector(goToDetailPage)];
-    self.navigationItem.rightBarButtonItem = detailBarButton;
-    
-    //define button
-    UIButton *helloButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [helloButton setTitle:@"Hello" forState:UIControlStateNormal];
-    [helloButton addTarget:self action:@selector(onHelloButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
-    //add button to view
-    [self.view addSubview:helloButton];
-    
-    [helloButton mas_makeConstraints:^(MASConstraintMaker *make){
-        make.width.equalTo(@60.0);
-        make.height.equalTo(@40.0);
-        make.center.equalTo(self.view);
-    }];
+    //切换
+    if (!self.yellowVC.view.superview) {
+        self.yellowVC.view.frame = self.view.frame;
+        [self switchViewFromViewController:self.blueVC toViewController:self.yellowVC];
+    }else{
+        self.blueVC.view.frame = self.view.frame;
+        [self switchViewFromViewController:self.yellowVC toViewController:self.blueVC];
+    }
 }
 
--(void) onHelloButtonClicked:(id)sender{
-    NSLog(@"Hello,Word!");
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Hello" message:@"Hello,World" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"Cancle" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        NSLog(@"Cancle");
-    }];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NSLog(@"OK");
-        [SVProgressHUD showSuccessWithStatus:@"Hello,World!" maskType:SVProgressHUDMaskTypeBlack];
-    }];
-    [alertController addAction:cancleAction];
-    [alertController addAction:okAction];
-    [self presentViewController:alertController animated:YES completion:nil];
+-(void)switchViewFromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+    if (fromVC != nil) {
+        [fromVC willMoveToParentViewController:nil];
+        [fromVC.view removeFromSuperview];
+        [fromVC removeFromParentViewController];
+    }
+    if (toVC != nil) {
+        [self addChildViewController:toVC];
+        [self.view insertSubview:toVC.view atIndex:0];
+        [toVC didMoveToParentViewController:self];
+    }
 }
 
-- (void)goToDetailPage {
-    SADetailViewController *detailViewController = [[SADetailViewController alloc] init];
-    detailViewController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:detailViewController animated:YES];
+- (void)didReceiveMemoryWarning{
+    [super didReceiveMemoryWarning];
+    if (!self.yellowVC.view.superview) {
+        self.yellowVC = nil;
+    }else{
+        self.blueVC = nil;
+    }
 }
-
 
 @end

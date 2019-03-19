@@ -32,7 +32,7 @@
     UIImage *tabImageHighlight = nil;
     
     //Main
-    SAMainViewController *mainVC = [[SAMainViewController alloc] init];
+    SAMainViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
     mainVC.title = @"Main";
     tabImage = [[SACommonUtil imageWithColor:[UIColor redColor] size:CGSizeMake(30, 30)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     tabImageHighlight = [[SACommonUtil imageWithColor:[UIColor grayColor] size:CGSizeMake(30,30)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
