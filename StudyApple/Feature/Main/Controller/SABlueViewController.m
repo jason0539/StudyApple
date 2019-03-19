@@ -7,6 +7,7 @@
 //
 
 #import "SABlueViewController.h"
+#import "SATabBarViewController.h"
 
 @interface SABlueViewController ()
 
@@ -30,10 +31,13 @@
 }
 */
 - (IBAction)blueButtonPressed:(UIButton *)sender {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Blue View Button Pressed" message:@"You pressed the button on Blue VC" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Yep,I did" style:UIAlertActionStyleDefault handler:nil];
-    [alert addAction:action];
-    [self presentViewController:alert animated:YES completion:nil];
+//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Blue View Button Pressed" message:@"You pressed the button on Blue VC" preferredStyle:UIAlertControllerStyleAlert];
+//    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Yep,I did" style:UIAlertActionStyleDefault handler:nil];
+//    [alert addAction:action];
+//    [self presentViewController:alert animated:YES completion:nil];
+    SATabBarViewController *tabBarVc = [[UIStoryboard storyboardWithName:@"TabBar" bundle:nil] instantiateInitialViewController];
+    tabBarVc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:tabBarVc animated:YES];
 }
 
 @end
