@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SATabBarTwoViewController : UIViewController
+@interface SATabBarTwoViewController : UIViewController <UIPickerViewDataSource,UIPickerViewDelegate>
 
 @end
 

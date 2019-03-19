@@ -32,6 +32,8 @@
 		C0B36F242240D26F004346F0 /* SATabBarOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B36F232240D26F004346F0 /* SATabBarOneViewController.m */; };
 		C0B36F272240D284004346F0 /* SATabBarTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B36F262240D284004346F0 /* SATabBarTwoViewController.m */; };
 		C0B36F292240E200004346F0 /* statedictionary.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0B36F282240E200004346F0 /* statedictionary.plist */; };
+		C0B36F2C2240EC3F004346F0 /* win.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0B36F2A2240EC3E004346F0 /* win.wav */; };
+		C0B36F2D2240EC3F004346F0 /* crunch.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0B36F2B2240EC3F004346F0 /* crunch.wav */; };
 		C0E61E9C21EF315E00D0268D /* SALoadMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E61E9B21EF315E00D0268D /* SALoadMoreView.m */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +101,8 @@
 		C0B36F252240D284004346F0 /* SATabBarTwoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SATabBarTwoViewController.h; sourceTree = "<group>"; };
 		C0B36F262240D284004346F0 /* SATabBarTwoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SATabBarTwoViewController.m; sourceTree = "<group>"; };
 		C0B36F282240E200004346F0 /* statedictionary.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = statedictionary.plist; sourceTree = "<group>"; };
+		C0B36F2A2240EC3E004346F0 /* win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = win.wav; sourceTree = "<group>"; };
+		C0B36F2B2240EC3F004346F0 /* crunch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = crunch.wav; sourceTree = "<group>"; };
 		C0E61E9A21EF30F600D0268D /* SALoadMoreView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SALoadMoreView.h; sourceTree = "<group>"; };
 		C0E61E9B21EF315E00D0268D /* SALoadMoreView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SALoadMoreView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -355,6 +359,8 @@
 		C0B36F172240CB8A004346F0 /* TabBarDemo */ = {
 			isa = PBXGroup;
 			children = (
+				C0B36F2B2240EC3F004346F0 /* crunch.wav */,
+				C0B36F2A2240EC3E004346F0 /* win.wav */,
 				C0B36F282240E200004346F0 /* statedictionary.plist */,
 				C0B36F1A2240CBD9004346F0 /* Controller */,
 				C0B36F182240CBB1004346F0 /* View */,
@@ -501,7 +507,9 @@
 				C0A6F4F021E5E34000DEEDE5 /* LaunchScreen.storyboard in Resources */,
 				C085D1E7223A695500798126 /* Me.storyboard in Resources */,
 				C0A6F4ED21E5E34000DEEDE5 /* Assets.xcassets in Resources */,
+				C0B36F2D2240EC3F004346F0 /* crunch.wav in Resources */,
 				C0A6F51621E5EDD800DEEDE5 /* Podfile in Resources */,
+				C0B36F2C2240EC3F004346F0 /* win.wav in Resources */,
 				C0B36F292240E200004346F0 /* statedictionary.plist in Resources */,
 				C0A6F4EB21E5E33F00DEEDE5 /* Main.storyboard in Resources */,
 			);

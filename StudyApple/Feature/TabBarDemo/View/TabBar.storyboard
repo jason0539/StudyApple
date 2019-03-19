@@ -18,18 +18,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Two" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YvY-RG-Q2q">
-                                <rect key="frame" x="171" y="323" width="32" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O0W-Ax-gF1">
+                                <rect key="frame" x="0.0" y="20" width="375" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="if4-em-gsM" id="6BS-gY-F6Y"/>
+                                    <outlet property="delegate" destination="if4-em-gsM" id="NGI-fa-99Y"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pql-wZ-50u">
+                                <rect key="frame" x="166" y="244" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="0.26310698798621612" blue="0.23065791617460141" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tj-ex-m5F">
+                                <rect key="frame" x="172" y="273" width="30" height="30"/>
+                                <state key="normal" title="Pin"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="DYG-ch-eKd" eventType="touchUpInside" id="ZNo-xN-Dwf"/>
+                                    <action selector="spin:" destination="if4-em-gsM" eventType="touchUpInside" id="lML-sU-UCK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pql-wZ-50u" firstAttribute="centerX" secondItem="7tj-ex-m5F" secondAttribute="centerX" id="4Kq-id-aJi"/>
+                            <constraint firstItem="O0W-Ax-gF1" firstAttribute="leading" secondItem="1PX-RF-ZAU" secondAttribute="leading" id="H4c-nd-U83"/>
+                            <constraint firstItem="7tj-ex-m5F" firstAttribute="top" secondItem="pql-wZ-50u" secondAttribute="bottom" constant="8" symbolic="YES" id="PBg-fB-tRu"/>
+                            <constraint firstItem="O0W-Ax-gF1" firstAttribute="centerX" secondItem="pql-wZ-50u" secondAttribute="centerX" id="S9p-4w-F3U"/>
+                            <constraint firstItem="7tj-ex-m5F" firstAttribute="leading" secondItem="ITK-qO-vjQ" secondAttribute="leading" constant="165" id="eX9-6Z-f7c"/>
+                            <constraint firstItem="O0W-Ax-gF1" firstAttribute="top" secondItem="ITK-qO-vjQ" secondAttribute="top" id="fVI-cm-eIt"/>
+                            <constraint firstAttribute="trailing" secondItem="O0W-Ax-gF1" secondAttribute="trailing" id="if6-sG-6so"/>
+                            <constraint firstItem="pql-wZ-50u" firstAttribute="leading" secondItem="ITK-qO-vjQ" secondAttribute="leading" constant="166" id="mu3-GP-hHH"/>
+                            <constraint firstItem="pql-wZ-50u" firstAttribute="top" secondItem="O0W-Ax-gF1" secondAttribute="bottom" constant="8" symbolic="YES" id="z0K-0H-F7g"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ITK-qO-vjQ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Two" image="doubleicon" id="ppS-gd-GxP"/>
+                    <connections>
+                        <outlet property="button" destination="7tj-ex-m5F" id="XYn-h2-ffE"/>
+                        <outlet property="picker" destination="O0W-Ax-gF1" id="8BE-HC-d7G"/>
+                        <outlet property="winLabel" destination="pql-wZ-50u" id="hOY-js-mHi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7TS-3q-UK8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -51,14 +81,6 @@
                                     <outlet property="delegate" destination="DYG-ch-eKd" id="air-34-epM"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tj-ex-m5F">
-                                <rect key="frame" x="165" y="244" width="44" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Select"/>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="DYG-ch-eKd" eventType="touchUpInside" id="ZNo-xN-Dwf"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="3BL-d8-x4p"/>
