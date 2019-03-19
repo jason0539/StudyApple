@@ -40,15 +40,21 @@
             self.blueVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Blue"];
         }
     }
-    
+    //动画
+    [UIView beginAnimations:@"View Flip" context:NULL];
+    [UIView setAnimationDuration:0.4];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     //切换
     if (!self.yellowVC.view.superview) {
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.view cache:YES];
         self.yellowVC.view.frame = self.view.frame;
         [self switchViewFromViewController:self.blueVC toViewController:self.yellowVC];
     }else{
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.view cache:YES];
         self.blueVC.view.frame = self.view.frame;
         [self switchViewFromViewController:self.yellowVC toViewController:self.blueVC];
     }
+    [UIView commitAnimations];
 }
 
 -(void)switchViewFromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
