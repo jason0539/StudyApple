@@ -66,7 +66,11 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
     self.extendedLayoutIncludesOpaqueBars = YES;
     
     //tableview
-    [self.tableView registerClass:[SAMovieCell class] forCellReuseIdentifier:SAExploreCellIdentifier];
+    UINib *movieCellNib = [UINib nibWithNibName:@"SAMovieCellNib" bundle:nil];
+    [self.tableView registerNib:movieCellNib
+         forCellReuseIdentifier:SAExploreCellIdentifier];
+//    [self.tableView registerClass:[SAMovieCell class] forCellReuseIdentifier:SAExploreCellIdentifier];
+    
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
     //refreshController
@@ -155,10 +159,7 @@ NSString * const SAExploreCellIdentifier = @"SAExploreCellIdentifier";
         return nil;
     }
     
-    SAMovieCell *cell = [tableView dequeueReusableCellWithIdentifier:SAExploreCellIdentifier];
-    if (!cell) {
-        cell = [[SAMovieCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SAExploreCellIdentifier];
-    }
+    SAMovieCell *cell = [tableView dequeueReusableCellWithIdentifier:SAExploreCellIdentifier forIndexPath:indexPath];
     
     SAMovie *movie = [self.movieList objectAtIndex:indexPath.row];
     
